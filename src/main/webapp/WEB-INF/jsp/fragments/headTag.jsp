@@ -22,7 +22,7 @@ PetClinic :: a Spring Framework demonstration
     <script src="${jQueryUi}"></script>
 
     <spring:url value="/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css" var="jQueryUiCss"/>
-    <link href="${jQueryUiCss}" rel="stylesheet"></link>
+    <link href="${jQueryUiCss}" rel="stylesheet"/>
 </head>
 
 

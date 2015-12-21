@@ -1,7 +1,7 @@
 .container {
     padding-top: 10px;
     margin-left: 50px;
-    width: 700px;
+    width: 785px;
 }
 
 .form-horizontal {
@@ -10,6 +10,10 @@
 
 input[type="text"] {
     height: 25px;
+}
+
+.navbar {
+    width: 100%;
 }
 
 .navbar .nav > li > a {
