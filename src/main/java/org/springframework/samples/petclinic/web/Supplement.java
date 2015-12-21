@@ -1,10 +1,14 @@
 package org.springframework.samples.petclinic.web;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 public class Supplement {
 
+  @JsonProperty("name")
   String name;
+  @JsonProperty("price")
   String price;
-
 
   public String getName() {
     return name;
