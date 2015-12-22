@@ -67,7 +67,11 @@ public class SupplementsController {
   private String getSupplementsJson() {
     StringBuilder sb = new StringBuilder();
     try {
-      URL url = new URL("http://localhost:8080/food");
+      String host = System.getProperty("supplements.host", "localhost");
+      String spec = "http://" + host + ":8080/supplements";
+      System.out.println("Calling to " + spec);
+
+      URL url = new URL(spec);
       URLConnection urlConnection = url.openConnection();
       InputStream inputStream = urlConnection.getInputStream();
       BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
