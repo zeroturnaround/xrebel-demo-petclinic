@@ -1,9 +1,13 @@
 package org.springframework.samples.petclinic.schedulers;
 
+import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
+import org.quartz.SimpleScheduleBuilder;
 import org.quartz.SimpleTrigger;
+import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
 import javax.servlet.ServletContextEvent;
@@ -24,15 +28,17 @@ public class QuartzJobSpawner implements ServletContextListener {
       scheduler = new StdSchedulerFactory().getScheduler();
       scheduler.start();
 
-      JobDetail job = new JobDetail();
-      job.setName("Periodic repository poller");
-      job.setJobClass(PeriodicRepositoryPoller.class);
+      JobDetail job = JobBuilder.newJob(PeriodicRepositoryPoller.class)
+          .withIdentity("dummyJobName", "group1").build();
 
-      SimpleTrigger trigger = new SimpleTrigger();
-      trigger.setStartTime(new Date(System.currentTimeMillis() + 10000));
-      trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
-      trigger.setRepeatInterval(30000);
-      trigger.setName("Custom repository trigger");
+      Trigger trigger = TriggerBuilder
+          .newTrigger()
+          .withIdentity("dummyTriggerName", "group1")
+          .withSchedule(
+              SimpleScheduleBuilder.simpleSchedule()
+                  .withIntervalInSeconds(25).repeatForever())
+          .startAt(new Date(System.currentTimeMillis() + 100000))
+          .build();
 
       scheduler.scheduleJob(job, trigger);
 
