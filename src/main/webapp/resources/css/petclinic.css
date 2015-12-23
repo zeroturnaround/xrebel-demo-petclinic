@@ -1,7 +1,7 @@
 .container {
     padding-top: 10px;
-    margin-left: 50px;
     width: 785px;
+    align-content: center;
 }
 
 .form-horizontal {
