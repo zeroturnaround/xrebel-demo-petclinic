@@ -4,7 +4,7 @@
 <spring:url value="/resources/images/banner-graphic-wide.png" var="banner"/>
 <img src="${banner}"/>
 
-<div class="navbar" style="width: 785px;">
+<div class="navbar" style="width: 770px;">
     <div class="navbar-inner">
         <ul class="nav">
             <li style="width: 100px;"><a href="<spring:url value="/" htmlEscape="true" />"><i class="icon-home"></i>
