@@ -68,7 +68,7 @@ public class SupplementsController {
     StringBuilder sb = new StringBuilder();
     try {
       String host = System.getProperty("supplements.host", "localhost");
-      String spec = "http://" + host + ":8080/supplements";
+      String spec = "http://" + host + ":8080/supplements/";
       System.out.println("Calling to " + spec);
 
       URL url = new URL(spec);

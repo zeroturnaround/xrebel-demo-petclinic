@@ -36,7 +36,7 @@ public class QuartzJobSpawner implements ServletContextListener {
           .withIdentity("dummyTriggerName", "group1")
           .withSchedule(
               SimpleScheduleBuilder.simpleSchedule()
-                  .withIntervalInSeconds(10).repeatForever())
+                  .withIntervalInSeconds(30).repeatForever())
           .startAt(new Date(System.currentTimeMillis() + 5000))
           .build();
 
