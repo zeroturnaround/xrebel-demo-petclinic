@@ -133,9 +133,32 @@ public class OwnerController {
      * @return a ModelMap with the model attributes for the view
      */
     @RequestMapping("/owners/{ownerId}")
-    public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
+    public ModelAndView showOwner(@PathVariable("ownerId") final int ownerId) throws InterruptedException {
         ModelAndView mav = new ModelAndView("owners/ownerDetails");
-        mav.addObject(this.clinicService.findOwnerById(ownerId));
+        
+        // kids, don't try this at home! this is only for the demo purposes
+        class GetByIdThread extends Thread {
+            private Owner ownerById;
+
+            private GetByIdThread() {
+                super("GetByIdThread");
+            }
+
+            @Override
+            public void run() {
+                ownerById = clinicService.findOwnerById(ownerId);
+            }
+
+            public Owner get() {
+                return ownerById;
+            }
+        }
+
+        GetByIdThread t = new GetByIdThread();
+        t.start();
+        t.join();
+
+        mav.addObject(t.get());
         return mav;
     }
 
