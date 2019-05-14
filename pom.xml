@@ -16,14 +16,15 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Spring -->
-		<spring-framework.version>3.2.4.RELEASE</spring-framework.version>
-		<spring-data-jpa.version>1.3.4.RELEASE</spring-data-jpa.version>
+		<spring-framework.version>4.3.23.RELEASE</spring-framework.version>
+		<spring-data-jpa.version>1.11.20.RELEASE</spring-data-jpa.version>
+		<spring-jdbc.version>4.1.7.RELEASE</spring-jdbc.version>
 
 
 		<!-- Java EE / Java SE dependencies -->
 		<jsp.version>2.2</jsp.version>
 		<jstl.version>1.2</jstl.version>
-		<servlet.version>2.5</servlet.version>
+		<servlet.version>3.0.1</servlet.version>
 		<jaxb-impl.version>2.2.7</jaxb-impl.version>
 
 		<!-- Hibernate / JPA -->
@@ -45,10 +46,10 @@
 		<slf4j.version>1.7.5</slf4j.version>
 
 		<!-- RSS -->
-		<rome.version>1.0</rome.version>
+		<rome.version>1.5.0</rome.version>
 
 		<!-- Test -->
-		<junit.version>4.11</junit.version>
+		<junit.version>4.12</junit.version>
 		<hamcrest.version>1.3</hamcrest.version>
 
 		<!-- Dates -->
@@ -81,7 +82,7 @@
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
+			<artifactId>javax.servlet-api</artifactId>
 			<version>${servlet.version}</version>
 			<scope>provided</scope>
 		</dependency>
@@ -148,6 +149,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-jdbc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
@@ -180,11 +186,11 @@
 
 		<!-- used for Atom -->
 		<dependency>
-			<groupId>rome</groupId>
+			<groupId>com.rometools</groupId>
 			<artifactId>rome</artifactId>
 			<version>${rome.version}</version>
 		</dependency>
-		
+
 		<!-- Date and Time -->
 		<dependency>
 			<groupId>joda-time</groupId>
